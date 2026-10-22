@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const COLS = "ABCDEFGHIJ".split("");
 const ROWS = 30;
 
-export function Sheets({ winId, fileId }: { winId: string; fileId?: string }) {
+export function Sheets({ winId, fileId }: { winId: string; fileId?: string | undefined }) {
   const { fs, saveFile, createFile, update } = useOs();
   const file = fs.find((f) => f.id === fileId);
   const [cells, setCells] = useState<Cells>(() => { try { return JSON.parse(file?.content || "{}"); } catch { return {}; } });

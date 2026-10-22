@@ -28,12 +28,12 @@ export function guessKind(name: string): FileKind {
   return "text";
 }
 
-export function Explorer({ startFolder }: { startFolder?: string }) {
+export function Explorer({ startFolder }: { startFolder?: string | undefined }) {
   const { fs, openFile, createFile, trash, restore, emptyTrash } = useOs();
   const [history, setHistory] = useState<string[]>([startFolder ?? ROOTS.documents]);
   const [sel, setSel] = useState<string | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
-  const cwd = history[history.length - 1];
+  const cwd = history[history.length - 1] ?? ROOTS.documents;
   const folder = fs.find((f) => f.id === cwd);
   const items = fs.filter((f) => f.parentId === cwd).sort((a, b) => (a.kind === "folder" ? -1 : 1) - (b.kind === "folder" ? -1 : 1) || a.name.localeCompare(b.name));
   const inTrash = cwd === ROOTS.trash;
