@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import wallpaper from "@/assets/wallpaper.jpg";
 
-export function Notepad({ winId, fileId }: { winId: string; fileId?: string }) {
+export function Notepad({ winId, fileId }: { winId: string; fileId?: string | undefined }) {
   const { fs, saveFile, createFile, update } = useOs();
   const file = fs.find((f) => f.id === fileId);
   const [text, setText] = useState(file?.content ?? "");
@@ -31,7 +31,7 @@ export function Notepad({ winId, fileId }: { winId: string; fileId?: string }) {
   );
 }
 
-export function Photos({ fileId }: { fileId?: string }) {
+export function Photos({ fileId }: { fileId?: string | undefined }) {
   const { fs } = useOs();
   const file = fs.find((f) => f.id === fileId);
   const src = file?.content?.startsWith("data:") ? file.content : wallpaper;

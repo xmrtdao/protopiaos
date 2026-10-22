@@ -10,7 +10,7 @@ function download(name: string, data: string, type: string) {
   a.click();
 }
 
-export function Writer({ winId, fileId }: { winId: string; fileId?: string }) {
+export function Writer({ winId, fileId }: { winId: string; fileId?: string | undefined }) {
   const { fs, saveFile, createFile, update } = useOs();
   const file = fs.find((f) => f.id === fileId);
   const ref = useRef<HTMLDivElement>(null);

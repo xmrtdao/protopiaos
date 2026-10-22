@@ -101,7 +101,7 @@ export function Taskbar({ startOpen, setStartOpen }: { startOpen: boolean; setSt
             <button
               key={a}
               title={APPS[a].name}
-              onClick={() => (wins.length ? toggleMin(wins[wins.length - 1].id) : open(a))}
+              onClick={() => (wins.length ? toggleMin(wins[wins.length - 1]!.id) : open(a))}
               className={cn("relative flex h-10 w-10 items-center justify-center rounded-md hover:bg-hover", isActive && "bg-hover")}
             >
               <AppIcon app={a} size={20} />

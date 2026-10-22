@@ -8,8 +8,8 @@ function expandRange(a: string, b: string): string[] {
   const m2 = /^([A-Z])(\d+)$/i.exec(b);
   if (!m1 || !m2) return [];
   const out: string[] = [];
-  const [c1, c2] = [colIndex(m1[1]), colIndex(m2[1])].sort((x, y) => x - y);
-  const [r1, r2] = [+m1[2], +m2[2]].sort((x, y) => x - y);
+  const [c1 = 0, c2 = 0] = [colIndex(m1[1]!), colIndex(m2[1]!)].sort((x, y) => x - y);
+  const [r1 = 0, r2 = 0] = [+m1[2]!, +m2[2]!].sort((x, y) => x - y);
   for (let c = c1; c <= c2; c++)
     for (let r = r1; r <= r2; r++) out.push(String.fromCharCode(65 + c) + r);
   return out;

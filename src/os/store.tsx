@@ -8,17 +8,17 @@ export interface FsNode {
   name: string;
   parentId: string | null;
   kind: FileKind;
-  content?: string;
+  content?: string | undefined;
   modified: number;
-  trashedFrom?: string;
+  trashedFrom?: string | undefined;
 }
 
 export interface Win {
   id: string;
   app: AppId;
   title: string;
-  fileId?: string;
-  folderId?: string;
+  fileId?: string | undefined;
+  folderId?: string | undefined;
   x: number;
   y: number;
   w: number;
